@@ -12,30 +12,6 @@
   height: 688px;
 }
 
-.dots {
-  position: absolute;
-  left: var(--page-gutter);
-  top: calc(50% - 29px);
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-xs);
-}
-.dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 30px;
-  background: var(--border-secondary);
-  transition:
-    height var(--dur-slow) var(--ease-out),
-    background-color var(--dur-slow) var(--ease-out);
-}
-.dotActive {
-  height: 56px;
-  background: var(--surface-invert);
-}
-
 .titleBlock {
   position: absolute;
   left: 177px;

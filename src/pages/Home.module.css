@@ -3,9 +3,47 @@
 }
 
 .rows {
+  position: relative;
+  height: 738px;
+  margin-bottom: 96px;
+  overflow: hidden;
+}
+
+.row {
+  position: absolute;
+  inset: 0;
+}
+
+.dots {
+  position: absolute;
+  left: var(--page-gutter);
+  top: calc(50% - 54px);
+  transform: translateY(-50%);
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding-bottom: 72px;
-  overflow: hidden;
+  align-items: center;
+  gap: var(--space-xs);
+}
+.dot {
+  position: relative;
+  width: 4px;
+  height: 4px;
+  border-radius: 30px;
+  background: var(--border-secondary);
+  transition:
+    height var(--dur-slow) var(--ease-out),
+    background-color var(--dur-slow) var(--ease-out);
+}
+.dot::before {
+  content: '';
+  position: absolute;
+  inset: -4px -10px;
+}
+.dot:hover {
+  background: var(--text-primary);
+}
+.dotActive {
+  height: 56px;
+  background: var(--surface-invert);
 }

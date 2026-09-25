@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
 import { Page } from '../components/Page'
 import { Hero } from '../components/Hero'
 import { PageTitle } from '../components/PageTitle'
@@ -9,23 +10,17 @@ import { CATEGORIES } from '../data/catalog'
 import { IMG } from '../lib/assets'
 import s from './Home.module.css'
 
-/** Figma › Categories_ALL (2137:37311). */
-export function Home() {
-  const [active, setActive] = useState(CATEGORIES[0].id)
+const EASE = [0.22, 1, 0.36, 1] as const
 
-  // Scroll-spy: highlight the anchor of the category row in view
-  useEffect(() => {
-    const els = CATEGORIES.map(c => document.getElementById(c.id)).filter(Boolean) as HTMLElement[]
-    const io = new IntersectionObserver(
-      entries => {
-        const visible = entries.filter(e => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-        if (visible) setActive(visible.target.id)
-      },
-      { threshold: [0.35, 0.6], rootMargin: '-140px 0px -20% 0px' },
-    )
-    els.forEach(el => io.observe(el))
-    return () => io.disconnect()
-  }, [])
+/**
+ * Figma › Categories_ALL (2137:37311).
+ * One category carousel is shown at a time; the anchor links and the vertical
+ * pagination dots switch between them with a vertical slide.
+ */
+export function Home() {
+  const [[index, dir], setState] = useState<[number, number]>([0, 0])
+  const select = (i: number) => i !== index && setState([i, i > index ? 1 : -1])
+  const category = CATEGORIES[index]
 
   return (
     <Page>
@@ -34,19 +29,45 @@ export function Home() {
         <PageTitle title="All Categories">
           <AnchorLinks
             items={CATEGORIES.map(c => ({ id: c.id, label: c.title, count: c.count }))}
-            active={active}
-            onSelect={id => {
-              setActive(id)
-              document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-            }}
+            active={category.id}
+            onSelect={id => select(CATEGORIES.findIndex(c => c.id === id))}
           />
         </PageTitle>
       </div>
 
       <div className={s.rows}>
-        {CATEGORIES.map((c, i) => (
-          <CategoryRow key={c.id} category={c} index={i} total={CATEGORIES.length} />
-        ))}
+        <AnimatePresence initial={false} custom={dir} mode="popLayout">
+          <motion.div
+            key={category.id}
+            custom={dir}
+            className={s.row}
+            variants={{
+              enter: (d: number) => ({ y: d * 120, opacity: 0 }),
+              center: { y: 0, opacity: 1, transition: { duration: 0.6, ease: EASE } },
+              exit: (d: number) => ({ y: d * -120, opacity: 0, transition: { duration: 0.35, ease: EASE } }),
+            }}
+            initial="enter"
+            animate="center"
+            exit="exit"
+          >
+            <CategoryRow category={category} />
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Figma › Pagination (vertical dot indicator) */}
+        <div className={s.dots} role="tablist" aria-label="Categories">
+          {CATEGORIES.map((c, i) => (
+            <button
+              key={c.id}
+              type="button"
+              role="tab"
+              aria-selected={i === index}
+              aria-label={c.title}
+              className={`${s.dot} ${i === index ? s.dotActive : ''}`}
+              onClick={() => select(i)}
+            />
+          ))}
+        </div>
       </div>
 
       <ImageBand image={IMG.designer} />

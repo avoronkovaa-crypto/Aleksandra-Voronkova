@@ -6,10 +6,10 @@ import { Img } from './Img'
 import { ArrowButton, CaretLink, RoundArrow } from './Button'
 import s from './CategoryRow.module.css'
 
-type Props = { category: Category; index: number; total: number }
+type Props = { category: Category }
 
 /** Figma › Categories block › Category (Desktop): title column + horizontal card carousel. */
-export function CategoryRow({ category, index, total }: Props) {
+export function CategoryRow({ category }: Props) {
   const track = useRef<HTMLDivElement>(null)
   const [edges, setEdges] = useState({ start: true, end: false })
   const [bar, setBar] = useState({ progress: 0, thumb: 0.3 })
@@ -35,17 +35,11 @@ export function CategoryRow({ category, index, total }: Props) {
   return (
     <section className={s.row} id={category.id}>
       <div className={s.aside}>
-        <div className={s.dots} aria-hidden>
-          {Array.from({ length: total }, (_, i) => (
-            <span key={i} className={`${s.dot} ${i === index ? s.dotActive : ''}`} />
-          ))}
-        </div>
         <motion.div
           className={s.titleBlock}
           initial={{ opacity: 0, x: -16 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-15% 0px' }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
         >
           <h2 className="t-title-2">{category.title}</h2>
           <ArrowButton to={to}>Explore all products</ArrowButton>
@@ -59,9 +53,8 @@ export function CategoryRow({ category, index, total }: Props) {
               key={card.title}
               className={s.cardWrap}
               initial={{ opacity: 0, x: 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-10% 0px' }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: Math.min(i, 3) * 0.08 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 + Math.min(i, 3) * 0.08 }}
             >
               <Link to={card.to ?? to} className={`${s.card} hover-parent`}>
                 <div className={s.cardImg}>
