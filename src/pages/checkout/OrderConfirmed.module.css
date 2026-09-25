@@ -1,0 +1,25 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xl);
+  min-height: 720px;
+  padding: var(--space-3xl) var(--page-gutter);
+  text-align: center;
+}
+
+.mark {
+  display: block;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  max-width: 560px;
+}
+.text strong {
+  font-weight: 500;
+}

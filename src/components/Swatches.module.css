@@ -1,0 +1,72 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.swatch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: inset 0 0 0 1.5px transparent;
+  transition:
+    box-shadow var(--dur-base) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+.sm .swatch {
+  width: 20px;
+  height: 20px;
+}
+.md .swatch {
+  width: 24px;
+  height: 24px;
+}
+
+.dot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.light {
+  box-shadow: inset 0 0 0 1px var(--border-secondary);
+}
+
+.swatch:hover:not(:disabled) {
+  box-shadow: inset 0 0 0 1.5px var(--border-secondary);
+}
+.swatch:hover:not(:disabled) .dot {
+  transform: scale(1.08);
+}
+.swatch.active {
+  box-shadow: inset 0 0 0 1.5px var(--border-primary);
+}
+.swatch:active:not(:disabled) {
+  transform: scale(0.9);
+}
+
+/* Not available: faded dot with a diagonal strike */
+.unavailable {
+  cursor: not-allowed;
+}
+.unavailable .dot {
+  opacity: 0.55;
+}
+.unavailable::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 72%;
+  height: 1px;
+  background: var(--text-primary);
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.extra {
+  color: var(--text-secondary);
+}

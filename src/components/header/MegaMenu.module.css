@@ -1,0 +1,89 @@
+.panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--header-height);
+  z-index: 1;
+  background: var(--surface-primary);
+  color: var(--text-primary);
+  will-change: clip-path;
+}
+
+.inner {
+  display: flex;
+  gap: var(--space-md);
+  height: min(720px, calc(100vh - var(--header-height)));
+  padding: var(--space-md) var(--page-gutter);
+}
+
+.left {
+  display: flex;
+  gap: var(--space-md);
+  width: 688px;
+  flex-shrink: 0;
+  padding: var(--space-3xl) 0;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+  width: 336px;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.category {
+  display: inline-block;
+  color: var(--text-primary);
+  transition:
+    color var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+.category:hover,
+.categoryActive {
+  color: var(--text-brand);
+}
+.nowrap {
+  white-space: nowrap;
+}
+
+.subList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sub {
+  display: inline-block;
+  color: var(--text-primary);
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+.sub:hover {
+  color: var(--text-brand);
+  transform: translateX(4px);
+}
+
+.media {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--radius-full);
+  background: var(--surface-secondary);
+}
+
+.mediaLayer {
+  position: absolute;
+  inset: 0;
+}

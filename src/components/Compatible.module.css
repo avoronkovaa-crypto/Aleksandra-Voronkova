@@ -1,0 +1,24 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-3xl) 0 var(--space-3xl) var(--page-gutter);
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  gap: var(--space-md);
+  overflow-x: auto;
+  padding-right: var(--page-gutter);
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+.row::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  flex: 0 0 336px;
+  scroll-snap-align: start;
+}

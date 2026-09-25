@@ -1,0 +1,181 @@
+/* ---------- Solid pill ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-weight: 400;
+  white-space: nowrap;
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+.btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.lg {
+  padding: var(--space-sm) var(--space-lg);
+  font-size: 16px;
+  line-height: 26px;
+}
+.md {
+  padding: var(--space-xs) var(--space-md);
+  font-size: 16px;
+  line-height: 26px;
+}
+.sm {
+  padding: var(--space-xs) var(--space-md);
+  font-size: 14px;
+  line-height: 16px;
+}
+.block {
+  width: 100%;
+}
+
+/* Secondary: black → electric blue on hover */
+.secondary {
+  background: var(--surface-invert);
+  color: var(--text-invert);
+}
+.secondary:hover:not(:disabled) {
+  background: var(--surface-brand);
+}
+
+/* Tertiary: grey → a touch darker on hover */
+.tertiary {
+  background: var(--surface-secondary);
+  color: var(--text-primary);
+}
+.tertiary:hover:not(:disabled) {
+  background: #e6e4e6;
+}
+
+/* White pill used on dark imagery */
+.invert {
+  background: var(--surface-primary);
+  color: var(--text-primary);
+}
+.invert:hover:not(:disabled) {
+  background: var(--surface-brand);
+  color: var(--text-invert);
+}
+
+/* Disabled */
+.btn:disabled {
+  background: var(--surface-tertiary);
+  color: var(--text-invert);
+  cursor: not-allowed;
+}
+.btn:disabled .label {
+  opacity: 0.6;
+}
+
+/* ---------- Text CTA + arrow pill ---------- */
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding-left: 0;
+  border-radius: var(--radius-pill);
+  color: var(--text-primary);
+  background-color: transparent;
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    padding var(--dur-base) var(--ease-out),
+    gap var(--dur-base) var(--ease-out);
+}
+.arrowText {
+  padding: var(--space-xs) 0;
+  font-size: 14px;
+  line-height: 16px;
+  white-space: nowrap;
+}
+.arrowPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xxs) var(--space-xs);
+  border-radius: 30px;
+  background: var(--surface-secondary);
+  transition: background-color var(--dur-base) var(--ease-out);
+}
+.arrowPill svg {
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.arrow:hover {
+  background-color: var(--surface-secondary);
+  padding-left: var(--space-md);
+  gap: 0;
+}
+.arrow:hover .arrowPill svg {
+  transform: translateX(2px);
+}
+.arrowInvert {
+  color: var(--text-invert);
+}
+.arrowInvert .arrowPill {
+  background: rgba(255, 255, 255, 0.16);
+}
+.arrowInvert:hover {
+  background-color: rgba(255, 255, 255, 0.16);
+}
+.arrowInvert:hover .arrowPill {
+  background: transparent;
+}
+
+/* ---------- Learn more > ---------- */
+.caret {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xxs);
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+.caret svg {
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.caret:hover svg,
+:global(.hover-parent):hover .caret svg {
+  transform: translateX(3px);
+}
+.caretLight {
+  color: var(--text-invert);
+}
+.caretSmall {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+/* ---------- Carousel arrow ---------- */
+.round {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(242, 241, 242, 0.8);
+  color: var(--text-primary);
+  backdrop-filter: blur(6px);
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out),
+    opacity var(--dur-base) var(--ease-out);
+}
+.round:hover {
+  background: var(--surface-primary);
+}
+.round:active {
+  transform: scale(0.94);
+}
+.round:disabled {
+  opacity: 0;
+  pointer-events: none;
+}

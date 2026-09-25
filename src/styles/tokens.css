@@ -1,0 +1,75 @@
+/*
+ * Fractal Design — design tokens
+ * Source: Figma "Fractal-Design" › Design system (node 569:5155)
+ */
+:root {
+  /* Brand */
+  --color-black: #131313;
+  --color-white: #ffffff;
+  --color-grey: #f2f1f2;
+  --color-dark-grey: #d1d1d1;
+  --color-electric-blue: #3578e7;
+
+  /* Text */
+  --text-primary: #131313;
+  --text-secondary: #b2b2b2;
+  --text-invert: #ffffff;
+  --text-brand: #3578e7;
+  --text-error: #b54708;
+  --text-success: #027a48;
+
+  /* Surface */
+  --surface-primary: #ffffff;
+  --surface-secondary: #f2f1f2;
+  --surface-tertiary: #b2b2b2;
+  --surface-invert: #131313;
+  --surface-brand: #3578e7;
+  --surface-success: #ecfdf3;
+  --surface-warning: #fef6ee;
+
+  /* Border */
+  --border-primary: #131313;
+  --border-secondary: #b2b2b2;
+  --border-invert: #ffffff;
+  --border-error: rgba(181, 71, 8, 0.4);
+  --border-error-strong: rgba(181, 71, 8, 0.8);
+  --border-success: rgba(2, 122, 72, 0.4);
+
+  /* Spacing */
+  --space-xxxs: 2px;
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 72px;
+  --page-gutter: 60px;
+
+  /* Radius */
+  --radius-minimal: 4px;
+  --radius-rounded: 8px;
+  --radius-full: 16px;
+  --radius-pill: 50px;
+
+  /* Effects */
+  --shadow-xs: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+  --overlay-dark: rgba(0, 0, 0, 0.84);
+
+  /* Typography */
+  --font-display: 'Sofia Pro', 'Figtree', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Motion — short, sharp, eased-out */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur-base: 240ms;
+  --dur-slow: 420ms;
+
+  /* Layout */
+  --header-top: 32px;
+  --header-main: 108px;
+  --header-height: 140px;
+}

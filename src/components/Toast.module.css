@@ -1,0 +1,20 @@
+.host {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  z-index: 90;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-pill);
+  background: var(--surface-invert);
+  color: var(--text-invert);
+  white-space: nowrap;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
+}

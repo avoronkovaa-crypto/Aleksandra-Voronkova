@@ -1,0 +1,212 @@
+.layout {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* ---------- Gallery ---------- */
+.left {
+  position: sticky;
+  top: var(--header-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xl);
+  width: 983px;
+  height: calc(100vh - var(--header-height));
+  min-height: 640px;
+  padding: var(--space-3xl) var(--space-lg);
+  background: var(--surface-secondary);
+}
+
+.gallery {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.galleryArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 32px;
+  border-radius: 30px;
+  background: var(--surface-primary);
+  color: var(--text-primary);
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+.galleryArrow:hover {
+  background: var(--surface-invert);
+  color: var(--text-invert);
+}
+.galleryArrow:active {
+  transform: scale(0.94);
+}
+
+.stage {
+  position: relative;
+  width: min(666px, calc(100vh - 320px));
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+}
+.slide:active {
+  cursor: grabbing;
+}
+.photo {
+  border-radius: var(--radius-rounded);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+.pageDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 30px;
+  background: var(--border-secondary);
+  transition:
+    width var(--dur-slow) var(--ease-out),
+    background-color var(--dur-slow) var(--ease-out);
+}
+.pageDot:hover {
+  background: var(--text-primary);
+}
+.pageDotActive {
+  width: 56px;
+  background: var(--surface-invert);
+}
+
+/* ---------- Details ---------- */
+.right {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+  padding: var(--space-2xl) var(--page-gutter) var(--space-2xl) var(--space-lg);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+.titlePrice {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+.colorName {
+  display: inline-block;
+}
+
+.models {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.model {
+  height: 58px;
+  border-radius: 64px;
+  box-shadow: inset 0 0 0 1px var(--border-secondary);
+  color: var(--text-primary);
+  transition:
+    box-shadow var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out);
+}
+.model:hover {
+  box-shadow: inset 0 0 0 1px var(--border-primary);
+}
+.modelActive,
+.modelActive:hover {
+  background: var(--surface-invert);
+  color: var(--text-invert);
+  box-shadow: inset 0 0 0 1px var(--surface-invert);
+}
+
+.reviews {
+  padding-top: var(--space-md);
+}
+
+.compatible {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+.compatibleList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ---------- Sticky purchase bar ---------- */
+.buyBar {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  display: flex;
+  gap: var(--space-xs);
+  padding: var(--space-lg) var(--page-gutter) var(--space-lg) 33px;
+  background: var(--surface-primary);
+  border-top: 1px solid var(--surface-secondary);
+}
+.addBtn {
+  flex: 1;
+  overflow: hidden;
+}
+.addLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.like {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 50px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-secondary);
+  color: var(--text-primary);
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out);
+}
+.like span {
+  display: inline-flex;
+}
+.like:hover {
+  background: #e6e4e6;
+}
+.liked {
+  color: var(--color-electric-blue);
+}
+.liked :global(svg path) {
+  fill: currentColor;
+}

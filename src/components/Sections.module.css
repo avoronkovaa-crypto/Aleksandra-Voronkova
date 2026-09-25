@@ -1,0 +1,61 @@
+/* Image band */
+.band {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-secondary);
+}
+.bandInner {
+  position: absolute;
+  inset: -6% 0;
+}
+
+/* Subscription */
+.subscription {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2xl);
+  padding: var(--space-2xl) var(--page-gutter) 80px 529px;
+}
+.subscriptionText {
+  width: 923px;
+}
+
+/* Story block */
+.story {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  padding: var(--space-3xl) var(--page-gutter);
+}
+.storyTop {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2xl);
+}
+.storyTitle {
+  width: 847px;
+}
+.storyThumb {
+  width: 240px;
+  height: 240px;
+  overflow: hidden;
+  border-radius: var(--radius-rounded);
+  background: var(--surface-secondary);
+}
+.storyText {
+  display: flex;
+  gap: var(--space-lg);
+  margin-top: -88px;
+}
+.storyText > :first-child {
+  width: 379px;
+  margin-right: 66px;
+}
+.storyCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2xl);
+  width: 458px;
+}

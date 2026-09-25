@@ -1,0 +1,66 @@
+.root {
+  position: relative;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-xxs);
+  border-radius: var(--radius-minimal);
+  color: var(--text-primary);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+.trigger:hover,
+.open {
+  background: var(--surface-secondary);
+}
+.trigger :global(.t-body-2) {
+  font-weight: 400;
+}
+
+.caret {
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.open .caret {
+  transform: rotate(180deg);
+}
+
+.list {
+  position: absolute;
+  top: calc(100% + 6px);
+  z-index: 20;
+  min-width: 180px;
+  margin: 0;
+  padding: var(--space-xs);
+  list-style: none;
+  border-radius: var(--radius-rounded);
+  background: var(--surface-primary);
+  box-shadow:
+    0 5px 11px rgba(91, 91, 91, 0.16),
+    0 21px 21px rgba(91, 91, 91, 0.12),
+    0 47px 28px rgba(91, 91, 91, 0.08);
+}
+.right {
+  right: 0;
+  transform-origin: top right;
+}
+.left {
+  left: 0;
+  transform-origin: top left;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-sm) var(--space-xs);
+  border-radius: var(--radius-minimal);
+  text-align: left;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+.option:hover,
+.selected {
+  background: var(--surface-secondary);
+}

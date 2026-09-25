@@ -1,0 +1,191 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxs);
+  min-width: 0;
+}
+.field > label {
+  color: var(--text-primary);
+}
+
+.control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0 var(--space-sm);
+  border-radius: var(--radius-minimal);
+  background: var(--surface-primary);
+  box-shadow:
+    inset 0 0 0 1px var(--border-secondary),
+    var(--shadow-xs);
+  transition: box-shadow var(--dur-base) var(--ease-out);
+}
+.control:hover {
+  box-shadow:
+    inset 0 0 0 1px #8a8a8a,
+    var(--shadow-xs);
+}
+.control:focus-within {
+  box-shadow:
+    inset 0 0 0 1px var(--border-primary),
+    var(--shadow-xs);
+}
+
+/* Destructive */
+.error,
+.error:hover {
+  box-shadow:
+    inset 0 0 0 1px var(--border-error),
+    var(--shadow-xs);
+}
+.error:focus-within {
+  box-shadow:
+    inset 0 0 0 1px var(--border-error-strong),
+    var(--shadow-xs);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 46px;
+  padding: 10px 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--text-primary);
+  caret-color: var(--text-primary);
+}
+.input::placeholder {
+  color: var(--text-secondary);
+}
+.input[readonly] {
+  cursor: pointer;
+}
+
+.trailing {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+.caret {
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.caretOpen {
+  transform: rotate(180deg);
+}
+
+.errorText {
+  color: var(--text-error);
+  overflow: hidden;
+}
+.hint {
+  color: var(--text-secondary);
+  overflow: hidden;
+}
+
+/* Select / prefix menu */
+.menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  z-index: 20;
+  margin: 0;
+  padding: var(--space-xxs);
+  list-style: none;
+  border-radius: var(--radius-minimal);
+  background: var(--surface-primary);
+  box-shadow:
+    0 0 0 1px var(--border-secondary),
+    0 12px 24px rgba(16, 24, 40, 0.08);
+}
+.option {
+  display: block;
+  width: 100%;
+  padding: var(--space-xs) var(--space-xs);
+  border-radius: var(--radius-minimal);
+  text-align: left;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+.option:hover,
+.optionOn {
+  background: var(--surface-secondary);
+}
+
+.prefix {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  margin-left: 2px;
+}
+.prefixBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xxs);
+  padding-right: var(--space-xxs);
+}
+.prefixMenu {
+  right: auto;
+  width: 96px;
+}
+
+/* ---------- Radio ---------- */
+.radio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--surface-primary);
+  box-shadow: inset 0 0 0 1px var(--border-secondary);
+  transition: box-shadow var(--dur-base) var(--ease-out);
+}
+:global(.radio-host):hover .radio {
+  box-shadow: inset 0 0 0 1px var(--color-electric-blue);
+}
+.radioOn,
+:global(.radio-host):hover .radioOn {
+  box-shadow: inset 0 0 0 1.5px var(--color-electric-blue);
+}
+.radioDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-electric-blue);
+}
+
+/* ---------- Checkbox ---------- */
+.checkRow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  user-select: none;
+}
+.check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-minimal);
+  background: var(--surface-primary);
+  box-shadow: inset 0 0 0 1px var(--border-secondary);
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+.checkRow:hover .check {
+  box-shadow: inset 0 0 0 1px var(--color-electric-blue);
+}
+.checkOn,
+.checkRow:hover .checkOn {
+  background: var(--color-electric-blue);
+  box-shadow: inset 0 0 0 1px var(--color-electric-blue);
+}
+.checkRow input:focus-visible + .check {
+  outline: 2px solid var(--color-electric-blue);
+  outline-offset: 2px;
+}

@@ -1,0 +1,140 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  --fg: var(--text-invert);
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.tucked {
+  transform: translateY(-100%);
+}
+
+.solid {
+  --fg: var(--text-primary);
+}
+
+/* ---------- Top bar ---------- */
+.topBar {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--header-top);
+  padding: 0 var(--page-gutter);
+  background: var(--surface-invert);
+  color: var(--text-invert);
+}
+.lang {
+  position: absolute;
+  right: var(--page-gutter);
+  top: 0;
+}
+
+/* ---------- Main row ---------- */
+.main {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-main);
+  padding: var(--space-lg) var(--page-gutter);
+  color: var(--fg);
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color var(--dur-slow) var(--ease-out),
+    color var(--dur-slow) var(--ease-out),
+    border-color var(--dur-slow) var(--ease-out);
+}
+.solid .main {
+  background-color: var(--surface-primary);
+  border-bottom-color: var(--border-secondary);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 373px;
+}
+.logo {
+  display: inline-flex;
+  color: inherit;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+.logo:hover {
+  opacity: 0.72;
+}
+.tagline {
+  width: 138px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xl);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xxs);
+}
+
+.tab {
+  position: relative;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  line-height: 16px;
+  color: inherit;
+  background-color: transparent;
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out);
+}
+.tab:hover,
+.tabActive {
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.iconTab {
+  display: inline-flex;
+  align-items: flex-start;
+  padding: var(--space-xxs) var(--space-xs);
+  border-radius: var(--radius-pill);
+  color: inherit;
+  background-color: transparent;
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+.iconTab:hover {
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+}
+.iconTab:active {
+  transform: scale(0.94);
+}
+.count {
+  display: inline-block;
+  margin-top: -2px;
+}
+
+/* ---------- Dim layer behind open panels ---------- */
+.dim {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: var(--overlay-dark);
+}

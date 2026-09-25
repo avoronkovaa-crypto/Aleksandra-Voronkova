@@ -1,0 +1,149 @@
+.row {
+  position: relative;
+  display: flex;
+  height: 738px;
+  scroll-margin-top: var(--header-height);
+}
+
+.aside {
+  position: relative;
+  flex-shrink: 0;
+  width: 528px;
+  height: 688px;
+}
+
+.dots {
+  position: absolute;
+  left: var(--page-gutter);
+  top: calc(50% - 29px);
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 30px;
+  background: var(--border-secondary);
+  transition:
+    height var(--dur-slow) var(--ease-out),
+    background-color var(--dur-slow) var(--ease-out);
+}
+.dotActive {
+  height: 56px;
+  background: var(--surface-invert);
+}
+
+.titleBlock {
+  position: absolute;
+  left: 177px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.carousel {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.track {
+  display: flex;
+  gap: var(--space-md);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.track::-webkit-scrollbar {
+  display: none;
+}
+.trackEnd {
+  flex: 0 0 44px;
+}
+
+.cardWrap {
+  flex: 0 0 688px;
+  scroll-snap-align: start;
+}
+
+.card {
+  position: relative;
+  display: block;
+  width: 688px;
+  height: 688px;
+  overflow: hidden;
+  border-radius: var(--radius-rounded);
+  color: var(--text-invert);
+  isolation: isolate;
+}
+
+.cardImg {
+  position: absolute;
+  inset: 0;
+  transition: transform 900ms var(--ease-out);
+}
+.card:hover .cardImg {
+  transform: scale(1.05);
+}
+
+.cardShade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 212px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.69) 100%);
+  transition: height var(--dur-slow) var(--ease-out);
+}
+.card:hover .cardShade {
+  height: 280px;
+}
+
+.cardText {
+  position: absolute;
+  left: var(--space-lg);
+  bottom: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 220px;
+}
+
+.arrow {
+  position: absolute;
+  top: 322px;
+  z-index: 2;
+}
+.arrowRight {
+  right: 60px;
+}
+.arrowLeft {
+  left: 22px;
+}
+
+.progress {
+  position: absolute;
+  left: 272px;
+  top: 720px;
+  width: 921px;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--surface-secondary);
+}
+.progressThumb {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--surface-invert);
+}
+.progressThumb { transition: left 120ms linear, width var(--dur-base) var(--ease-out); }

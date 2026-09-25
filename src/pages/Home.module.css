@@ -1,0 +1,11 @@
+.heading {
+  padding-bottom: 72px;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 72px;
+  overflow: hidden;
+}

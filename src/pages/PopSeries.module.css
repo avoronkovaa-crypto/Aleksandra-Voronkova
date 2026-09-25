@@ -1,0 +1,110 @@
+.tabBar {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--space-md);
+  background: var(--surface-primary);
+}
+.tabs {
+  width: 436px;
+}
+.tabThumb {
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin: -4px 0 -12px;
+}
+
+.blocks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+  padding: 0 0 var(--space-3xl);
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  scroll-margin-top: var(--header-height);
+}
+
+.banner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 850px;
+  padding: 96px 0;
+  overflow: hidden;
+}
+.bannerImg {
+  position: absolute;
+  inset: 0;
+  transition: transform 1200ms var(--ease-out);
+}
+.banner:hover .bannerImg {
+  transform: scale(1.02);
+}
+
+.bannerText {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  width: 464px;
+  text-align: center;
+}
+.dark .bannerText {
+  color: var(--text-invert);
+}
+.light .bannerText {
+  color: var(--text-primary);
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+.price {
+  opacity: 0.6;
+}
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+.card {
+  width: 336px;
+}
+
+.statement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xl);
+  height: 982px;
+  background: var(--surface-invert);
+  color: var(--text-invert);
+  text-align: center;
+}
+.statementTitle {
+  width: 682px;
+  color: var(--text-secondary);
+}
+.statementTitle strong {
+  font-weight: 500;
+  color: var(--text-invert);
+}
+.statementText {
+  width: 434px;
+}

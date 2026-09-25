@@ -1,0 +1,314 @@
+.layout {
+  display: grid;
+  grid-template-columns: 571px 572px;
+  justify-content: space-between;
+  padding: var(--space-xl) var(--page-gutter) 120px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: calc(var(--space-md) * -1);
+  font-size: 12px;
+  color: var(--text-primary);
+  transition:
+    gap var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out);
+}
+.back:hover {
+  gap: var(--space-sm);
+  color: var(--text-brand);
+}
+
+.steps {
+  padding-top: var(--space-lg);
+}
+.steps a:hover {
+  color: var(--text-primary);
+}
+
+/* ---------- Summary ---------- */
+.summary {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-xl));
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--space-lg);
+}
+.summaryHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: var(--space-lg);
+}
+.edit {
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.edit:hover {
+  color: var(--text-primary);
+}
+
+.lines {
+  padding-bottom: var(--space-xl);
+}
+
+.promo {
+  margin-bottom: 0;
+}
+
+.summaryFooter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  padding-top: var(--space-2xl);
+}
+
+/* ---------- Method lists ---------- */
+.methods {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+.method {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+.method > span:first-child {
+  margin-top: 3px;
+}
+.methodBody {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+.methodText {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.methodTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-weight: 500;
+}
+.methodTitle img {
+  display: block;
+}
+.methodNote {
+  color: var(--text-secondary);
+}
+.method:hover .methodNote {
+  color: #8a8a8a;
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.payMethod {
+  align-items: center;
+}
+.payMethod > span:first-child {
+  margin-top: 0;
+}
+.payLogo {
+  display: block;
+  width: 37px;
+  height: 26px;
+}
+
+/* Info tooltip (Pick-Up point) */
+.info {
+  position: relative;
+  display: inline-flex;
+  color: var(--text-primary);
+}
+.tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  z-index: 5;
+  width: 240px;
+  padding: var(--space-sm);
+  border-radius: var(--radius-rounded);
+  background: var(--surface-invert);
+  color: var(--text-invert);
+  font-weight: 400;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+/* ---------- Details form ---------- */
+.detailsWrap {
+  overflow: hidden;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-top: 72px;
+}
+.detailsTitle {
+  padding-bottom: var(--space-md);
+}
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.saved {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+}
+.savedCard {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-md);
+  border-radius: var(--radius-rounded);
+  background: var(--surface-primary);
+  box-shadow: inset 0 0 0 1px var(--border-secondary);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    box-shadow var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out);
+}
+.savedCard:hover {
+  box-shadow: inset 0 0 0 1px #8a8a8a;
+}
+.savedOn,
+.savedOn:hover {
+  background: rgba(53, 120, 231, 0.02);
+  box-shadow: inset 0 0 0 1px var(--color-electric-blue);
+}
+.savedMain {
+  display: flex;
+  gap: var(--space-xs);
+}
+.savedMain > span:first-child {
+  margin-top: 0;
+}
+.savedText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxs);
+}
+.savedText :global(.t-foot-1) {
+  color: var(--text-secondary);
+}
+.savedTrash {
+  display: inline-flex;
+  color: var(--text-secondary);
+  transition: color var(--dur-base) var(--ease-out);
+}
+.savedTrash:hover {
+  color: var(--text-error);
+}
+
+.orNew {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin: var(--space-xs) 0 var(--space-md);
+  color: var(--text-secondary);
+}
+.orNew::before,
+.orNew::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--surface-secondary);
+}
+
+.saveRow {
+  padding-top: var(--space-xs);
+}
+
+.redirect {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  border-radius: var(--radius-rounded);
+  background: var(--surface-secondary);
+}
+
+/* Delivery details recap in the payment summary */
+.recap {
+  border-bottom: 1px solid var(--border-secondary);
+}
+.recapHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-md) 0;
+}
+.recapBody {
+  overflow: hidden;
+}
+.recapInner {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md) 0 var(--space-lg);
+}
+.recapInner :global(.t-title-5) {
+  margin-bottom: var(--space-xs);
+}
+
+/* Pay button loading */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.emptyPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  min-height: calc(100vh - var(--header-height));
+  text-align: center;
+}
+
+/* Looks disabled (Figma: Continue / Pay disabled) but still clickable, so a
+   click can reveal every validation error at once. */
+.softDisabled,
+.softDisabled:hover {
+  background: var(--surface-tertiary) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.methodError {
+  color: var(--text-error);
+  overflow: hidden;
+}

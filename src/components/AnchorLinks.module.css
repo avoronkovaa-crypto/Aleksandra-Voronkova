@@ -1,0 +1,22 @@
+.row {
+  display: flex;
+  gap: var(--space-xl);
+}
+
+.link {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-xxs);
+  color: var(--text-secondary);
+  transition: color var(--dur-base) var(--ease-out);
+}
+.link sup {
+  padding-top: var(--space-xxs);
+  vertical-align: baseline;
+}
+.link:hover {
+  color: var(--text-primary);
+}
+.active {
+  color: var(--text-primary);
+}

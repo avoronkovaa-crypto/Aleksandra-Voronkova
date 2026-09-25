@@ -1,0 +1,277 @@
+/* ---------- Start screen ---------- */
+.hero {
+  position: relative;
+  height: 918px;
+  overflow: hidden;
+  background: #070707;
+  color: var(--text-invert);
+}
+.heroImg {
+  position: absolute;
+  inset: 0 0 -64px;
+}
+.fill {
+  width: 100%;
+  height: 100%;
+}
+.heroShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 40%);
+}
+.heroText {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  padding-top: 208px;
+  text-align: center;
+}
+.heroText :global(.t-title-5) {
+  width: 300px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+}
+.heroTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 140px;
+  line-height: 1;
+}
+
+/* ---------- Landing navigation ---------- */
+.landingNav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 64px;
+  padding: 0 var(--page-gutter);
+  background: #000;
+  color: var(--text-invert);
+}
+.navModel :global(button) {
+  color: var(--text-invert);
+}
+.navModel :global(button):hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.navModel :global(.t-body-2) {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 500;
+}
+.navTabs {
+  display: flex;
+  gap: var(--space-xl);
+}
+.navTab {
+  position: relative;
+  padding: 22px 0;
+  color: var(--text-secondary);
+  transition: color var(--dur-base) var(--ease-out);
+}
+.navTab:hover,
+.navTabActive {
+  color: var(--text-invert);
+}
+.navIndicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  height: 1px;
+  background: var(--text-invert);
+}
+.navBuy {
+  justify-self: end;
+}
+
+/* ---------- Slides ---------- */
+.slide {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 982px;
+  overflow: hidden;
+  background: #050505;
+  color: var(--text-invert);
+}
+.slideScene {
+  position: absolute;
+  inset: -10%;
+  animation: drift 16s var(--ease-in-out) infinite alternate;
+}
+.scene0 {
+  background:
+    radial-gradient(28% 36% at 32% 52%, rgba(53, 180, 231, 0.35), transparent 70%),
+    radial-gradient(40% 50% at 30% 60%, rgba(40, 90, 200, 0.2), transparent 70%),
+    #050505;
+}
+.scene1 {
+  background:
+    radial-gradient(34% 40% at 30% 50%, rgba(255, 255, 255, 0.08), transparent 70%),
+    linear-gradient(180deg, #0a0a0a, #151515);
+}
+.scene2 {
+  background:
+    radial-gradient(22% 30% at 26% 48%, rgba(64, 220, 255, 0.34), transparent 70%),
+    radial-gradient(40% 44% at 56% 60%, rgba(120, 120, 255, 0.14), transparent 70%),
+    #040404;
+}
+@keyframes drift {
+  from {
+    transform: translate3d(-2%, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(2%, -1%, 0) scale(1.05);
+  }
+}
+.slideText {
+  position: relative;
+  width: 400px;
+  margin-left: 912px;
+}
+
+/* ---------- Statement ---------- */
+.statement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 982px;
+  background: var(--surface-invert);
+  color: var(--text-invert);
+  text-align: center;
+}
+.statementText {
+  width: 1052px;
+}
+
+/* ---------- Benefits ---------- */
+.benefits {
+  display: grid;
+  grid-template-columns: 335px 335px;
+  column-gap: 135px;
+  row-gap: 72px;
+  padding: 96px var(--page-gutter) 96px 529px;
+}
+.benefit {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ---------- Media blocks ---------- */
+.media {
+  position: relative;
+  height: 982px;
+  overflow: hidden;
+  background: #070707;
+  color: var(--text-invert);
+}
+.media > span:first-child {
+  position: absolute;
+  inset: 0;
+}
+.mediaText {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding-top: 96px;
+  text-align: center;
+}
+.play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 96px;
+}
+.playBtn {
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-pill);
+  background: var(--surface-primary);
+  color: var(--text-primary);
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out);
+}
+.playBtn:hover {
+  background: var(--surface-brand);
+  color: var(--text-invert);
+  transform: scale(1.04);
+}
+
+/* ---------- Reviews ---------- */
+.reviews {
+  padding: 96px var(--page-gutter) 96px 529px;
+}
+.reviewsInner {
+  width: 923px;
+}
+
+/* ---------- Specifications ---------- */
+.specs {
+  padding: var(--space-3xl) var(--page-gutter);
+  background: var(--surface-secondary);
+}
+
+/* ---------- Additional products ---------- */
+.more {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.moreCard {
+  position: relative;
+  height: 982px;
+  overflow: hidden;
+  background: #000;
+  color: var(--text-invert);
+}
+.moreImg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform 1200ms var(--ease-out);
+}
+.moreCard:hover .moreImg {
+  opacity: 1;
+  transform: scale(1.03);
+}
+.moreText {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 96px 120px 0;
+  text-align: center;
+  opacity: 0.6;
+  transition: opacity var(--dur-slow) var(--ease-out);
+}
+.moreCard:hover .moreText {
+  opacity: 1;
+}
+.moreText :global(.t-foot-1) {
+  width: 300px;
+}
+.morePrice {
+  color: var(--text-secondary);
+}
+.moreCta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
