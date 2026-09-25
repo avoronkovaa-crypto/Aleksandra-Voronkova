@@ -1,7 +1,8 @@
 .host {
   position: fixed;
   left: 50%;
-  bottom: 32px;
+  /* --bottom-bar: height of a bar pinned to the bottom (Pop Air landing nav) */
+  bottom: calc(32px + var(--bottom-bar, 0px));
   z-index: 90;
   transform: translateX(-50%);
   pointer-events: none;

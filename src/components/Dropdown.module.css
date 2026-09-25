@@ -36,6 +36,7 @@
   list-style: none;
   border-radius: var(--radius-rounded);
   background: var(--surface-primary);
+  color: var(--text-primary);
   box-shadow:
     0 5px 11px rgba(91, 91, 91, 0.16),
     0 21px 21px rgba(91, 91, 91, 0.12),
@@ -48,6 +49,16 @@
 .left {
   left: 0;
   transform-origin: top left;
+}
+.up {
+  top: auto;
+  bottom: calc(100% + 6px);
+}
+.up.left {
+  transform-origin: bottom left;
+}
+.up.right {
+  transform-origin: bottom right;
 }
 
 .option {

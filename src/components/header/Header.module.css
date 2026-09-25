@@ -5,10 +5,6 @@
   --fg: var(--text-invert);
   transition: transform var(--dur-slow) var(--ease-out);
 }
-.tucked {
-  transform: translateY(-100%);
-}
-
 .solid {
   --fg: var(--text-primary);
 }

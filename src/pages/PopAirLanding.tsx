@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router-dom'
-import { motion, useScroll, useTransform } from 'motion/react'
+import { motion, useIsPresent, useScroll, useTransform } from 'motion/react'
 import { Page } from '../components/Page'
 import { Img } from '../components/Img'
 import { Video, PlayableVideo } from '../components/Video'
@@ -53,6 +54,15 @@ export function PopAirLanding() {
   const { scrollY } = useScroll()
   const heroY = useTransform(scrollY, [0, 900], [0, 180])
   const heroFade = useTransform(scrollY, [0, 600], [1, 0])
+  const present = useIsPresent()
+
+  // The section nav is pinned to the bottom of the screen: toasts and the end of the page make room for it.
+  useEffect(() => {
+    document.documentElement.style.setProperty('--bottom-bar', '64px')
+    return () => {
+      document.documentElement.style.removeProperty('--bottom-bar')
+    }
+  }, [])
 
   useEffect(() => {
     const els = SECTIONS.map(x => document.getElementById(x.id)).filter(Boolean) as HTMLElement[]
@@ -67,7 +77,8 @@ export function PopAirLanding() {
   const go = (id: string) => {
     if (id === 'downloads') return toast(NOT_IN_PROTOTYPE)
     const el = document.getElementById(id)
-    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 63, behavior: 'smooth' })
+    const header = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - header, behavior: 'smooth' })
   }
 
   return (
@@ -100,29 +111,40 @@ export function PopAirLanding() {
         </motion.div>
       </section>
 
-      {/* Landing navigation — sticks to the top once the site header slides away */}
-      <nav className={s.landingNav} aria-label="Pop Air sections">
-        <div className={s.navModel}>
-          <Dropdown
-            label="Pop Air"
-            value="Pop Air"
-            align="left"
-            options={['Pop Air', 'Pop Mini Air', 'Pop XL Air']}
-            onChange={v => v !== 'Pop Air' && navigate(v === 'Pop Mini Air' ? '/product/pop-mini-air' : '/product/pop-xl-air')}
-          />
-        </div>
-        <div className={s.navTabs}>
-          {SECTIONS.map(x => (
-            <button key={x.id} type="button" className={`t-foot-1 ${s.navTab} ${active === x.id ? s.navTabActive : ''}`} onClick={() => go(x.id)}>
-              {x.label}
-              {active === x.id && <motion.span layoutId="landing-nav" className={s.navIndicator} transition={{ duration: 0.4, ease: EASE }} />}
-            </button>
-          ))}
-        </div>
-        <ButtonLink to="/product/pop-air" variant="invert" size="sm" className={s.navBuy}>
-          Buy
-        </ButtonLink>
-      </nav>
+      {/* Section navigation — pinned to the bottom of the screen. Rendered on <body>
+          so the page's enter/leave motion never moves it; it slides in and out itself. */}
+      {createPortal(
+        <motion.nav
+          className={s.landingNav}
+          aria-label="Pop Air sections"
+          initial={{ y: '100%' }}
+          animate={{ y: present ? 0 : '100%' }}
+          transition={present ? { duration: 0.6, ease: EASE, delay: 0.5 } : { duration: 0.2, ease: [0.65, 0, 0.35, 1] }}
+        >
+          <div className={s.navModel}>
+            <Dropdown
+              label="Pop Air"
+              value="Pop Air"
+              align="left"
+              direction="up"
+              options={['Pop Air', 'Pop Mini Air', 'Pop XL Air']}
+              onChange={v => v !== 'Pop Air' && navigate(v === 'Pop Mini Air' ? '/product/pop-mini-air' : '/product/pop-xl-air')}
+            />
+          </div>
+          <div className={s.navTabs}>
+            {SECTIONS.map(x => (
+              <button key={x.id} type="button" className={`t-foot-1 ${s.navTab} ${active === x.id ? s.navTabActive : ''}`} onClick={() => go(x.id)}>
+                {x.label}
+                {active === x.id && <motion.span layoutId="landing-nav" className={s.navIndicator} transition={{ duration: 0.4, ease: EASE }} />}
+              </button>
+            ))}
+          </div>
+          <ButtonLink to="/product/pop-air" variant="invert" size="sm" className={s.navBuy}>
+            Buy
+          </ButtonLink>
+        </motion.nav>,
+        document.body,
+      )}
 
       {/* Feature slides (looping videos) */}
       <section id="features">

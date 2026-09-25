@@ -9,10 +9,13 @@ type Props = {
   value?: string
   onChange: (v: string) => void
   align?: 'left' | 'right'
+  /** `up` opens the list above the trigger (e.g. in a bar pinned to the bottom). */
+  direction?: 'down' | 'up'
 }
 
 /** Figma › Landing navigation › Dropdowns (Expanded no/yes). */
-export function Dropdown({ label, options, value, onChange, align = 'right' }: Props) {
+export function Dropdown({ label, options, value, onChange, align = 'right', direction = 'down' }: Props) {
+  const shift = direction === 'up' ? 6 : -6
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -32,10 +35,10 @@ export function Dropdown({ label, options, value, onChange, align = 'right' }: P
       <AnimatePresence>
         {open && (
           <motion.ul
-            className={`${s.list} ${align === 'right' ? s.right : s.left}`}
-            initial={{ opacity: 0, y: -6, scale: 0.98 }}
+            className={`${s.list} ${align === 'right' ? s.right : s.left} ${direction === 'up' ? s.up : ''}`}
+            initial={{ opacity: 0, y: shift, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -6, scale: 0.98 }}
+            exit={{ opacity: 0, y: shift, scale: 0.98 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
             {options.map(o => (

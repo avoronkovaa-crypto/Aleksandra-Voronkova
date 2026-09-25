@@ -32,7 +32,6 @@ export function Header() {
   const [query, setQuery] = useState('')
   const [searchFocused, setSearchFocused] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [tucked, setTucked] = useState(false)
   const closeTimer = useRef<number | undefined>(undefined)
   const openTimer = useRef<number | undefined>(undefined)
   /** True when the open menu was opened by a click (a second click closes it). */
@@ -54,8 +53,6 @@ export function Header() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 24)
-      // The Pop Air landing has its own sticky section nav: tuck the site header away past the hero
-      setTucked(pathname === '/pop-air' && window.scrollY > 860)
     }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -102,7 +99,7 @@ export function Header() {
   return (
     <>
       <header
-        className={`${s.header} ${solid ? s.solid : s.transparent} ${tucked && !dimmed ? s.tucked : ''}`}
+        className={`${s.header} ${solid ? s.solid : s.transparent}`}
         onMouseLeave={scheduleClose}
         onMouseEnter={cancelClose}
       >
