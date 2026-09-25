@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { Logo } from '../Logo'
 import { Icon } from '../Icon'
@@ -8,6 +8,7 @@ import { MegaMenu, CommunityMenu } from './MegaMenu'
 import { SearchField, SearchResults } from './Search'
 import { LanguageSwitch } from './LanguageSwitch'
 import { PrototypeNav } from '../PrototypeNav'
+import { useToast, NOT_IN_PROTOTYPE } from '../Toast'
 import s from './Header.module.css'
 
 type Menu = 'products' | 'community' | null
@@ -24,7 +25,6 @@ const OVERLAY_ROUTES = ['/', '/cases', '/cases/pop-air', '/pop-series', '/pop-ai
 
 export function Header() {
   const { pathname } = useLocation()
-  const navigate = useNavigate()
   const { state, dispatch } = useStore()
   const { count } = totals(state)
 
@@ -35,6 +35,9 @@ export function Header() {
   const [tucked, setTucked] = useState(false)
   const closeTimer = useRef<number | undefined>(undefined)
   const openTimer = useRef<number | undefined>(undefined)
+  /** True when the open menu was opened by a click (a second click closes it). */
+  const pinned = useRef(false)
+  const toast = useToast()
 
   const searchOpen = query.trim().length > 0 && (searchFocused || menu === null)
   const overlayRoute = OVERLAY_ROUTES.includes(pathname)
@@ -89,7 +92,10 @@ export function Header() {
   }
   const scheduleClose = () => {
     window.clearTimeout(openTimer.current)
-    closeTimer.current = window.setTimeout(() => setMenu(null), 160)
+    closeTimer.current = window.setTimeout(() => {
+      pinned.current = false
+      setMenu(null)
+    }, 160)
   }
   const cancelClose = () => window.clearTimeout(closeTimer.current)
 
@@ -124,8 +130,17 @@ export function Header() {
                   onMouseEnter={() => (item.menu ? openMenu(item.menu) : openMenu(null))}
                   onFocus={() => item.menu && setMenu(item.menu)}
                   onClick={() => {
-                    if (item.id === 'products') navigate('/')
-                    else if (item.menu) setMenu(menu === item.menu ? null : item.menu)
+                    if (!item.menu) return toast(NOT_IN_PROTOTYPE)
+                    window.clearTimeout(openTimer.current)
+                    window.clearTimeout(closeTimer.current)
+                    if (menu === item.menu && pinned.current) {
+                      pinned.current = false
+                      setMenu(null)
+                    } else {
+                      pinned.current = true
+                      setMenu(item.menu)
+                      setQuery('')
+                    }
                   }}
                   aria-expanded={item.menu ? menu === item.menu : undefined}
                 >

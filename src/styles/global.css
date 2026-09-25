@@ -11,6 +11,9 @@
 }
 
 html {
+  /* Keep the scrollbar's space reserved when panels lock page scroll,
+     so the layout never shifts sideways when a menu or the cart opens. */
+  scrollbar-gutter: stable;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
