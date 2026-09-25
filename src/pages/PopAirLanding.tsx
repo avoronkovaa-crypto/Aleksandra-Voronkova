@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'motion/react'
 import { Page } from '../components/Page'
 import { Img } from '../components/Img'
+import { Video } from '../components/Video'
 import { ButtonLink, CaretLink } from '../components/Button'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { Reviews } from '../components/Reviews'
@@ -10,7 +11,7 @@ import { Accordion, SpecGrid, COMPATIBILITY, SPECIFICATIONS, DIMENSIONS, OTHER }
 import { Compatible } from '../components/Compatible'
 import { Dropdown } from '../components/Dropdown'
 import { useToast, NOT_IN_PROTOTYPE } from '../components/Toast'
-import { IMG } from '../lib/assets'
+import { IMG, VIDEO } from '../lib/assets'
 import { CROPS } from '../lib/crops'
 import s from './PopAirLanding.module.css'
 
@@ -26,9 +27,9 @@ const SECTIONS = [
 ]
 
 const SLIDES = [
-  'The vividly colored motherboard plates, drive trays and exterior accents create a fresh, expressive feel',
-  'A hidden compartment with two neatly concealed 5.25” bays with storage drawer and magnetic cover',
-  'The easy-to-clean front mesh acts as a dust filter while allowing high airflow',
+  { video: VIDEO.popColors, text: 'The vividly colored motherboard plates, drive trays and exterior accents create a fresh, expressive feel' },
+  { video: VIDEO.popCompartment, text: 'A hidden compartment with two neatly concealed 5.25” bays with storage drawer and magnetic cover' },
+  { video: VIDEO.popAirflow, text: 'The easy-to-clean front mesh acts as a dust filter while allowing high airflow' },
 ]
 
 const BENEFITS = [
@@ -123,11 +124,11 @@ export function PopAirLanding() {
         </ButtonLink>
       </nav>
 
-      {/* Feature slides (video in Figma) */}
+      {/* Feature slides (looping videos) */}
       <section id="features">
-        {SLIDES.map((text, i) => (
-          <div key={i} className={s.slide}>
-            <div className={`${s.slideScene} ${s[`scene${i}`]}`} />
+        {SLIDES.map(({ video, text }) => (
+          <div key={video} className={s.slide}>
+            <Video name={video} />
             <Reveal className={s.slideText} y={40}>
               <p className="t-title-3">{text}</p>
             </Reveal>

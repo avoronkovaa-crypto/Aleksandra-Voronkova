@@ -11,7 +11,7 @@ import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { Compatible } from '../components/Compatible'
 import { useToast, NOT_IN_PROTOTYPE } from '../components/Toast'
 import { POP_AIR_FAMILY, POP_SILENT_FAMILY, PRODUCTS } from '../data/catalog'
-import { IMG } from '../lib/assets'
+import { IMG, VIDEO } from '../lib/assets'
 import { CROPS } from '../lib/crops'
 import s from './PopSeries.module.css'
 
@@ -53,7 +53,7 @@ export function PopSeries() {
 
   return (
     <Page>
-      <Hero />
+      <Hero video={VIDEO.popColors} />
       <PageTitle title="Pop Series" />
 
       <div className={s.tabBar}>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { Preview } from '../data/catalog'
 import { Img } from './Img'
+import { Video } from './Video'
 import { PREVIEW_PHOTO_CROPS, PREVIEW_RENDER_CROPS } from '../lib/crops'
 import { CaretLink } from './Button'
 import { useToast, NOT_IN_PROTOTYPE } from './Toast'
@@ -16,7 +17,11 @@ export function PreviewCard({ item }: { item: Preview }) {
   const cls = `${s.card} ${item.large ? s.large : s.small} hover-parent`
   const body = (
     <>
-      {item.photo && (
+      {item.video ? (
+        <div className={s.photo}>
+          <Video name={item.video} />
+        </div>
+      ) : item.photo && (
         <div className={s.photo}>
           <Img src={item.photo} tone="dark" crop={item.large ? undefined : PREVIEW_PHOTO_CROPS[item.photo]} />
         </div>

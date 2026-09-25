@@ -1,4 +1,4 @@
-import { IMG } from '../lib/assets'
+import { IMG, VIDEO } from '../lib/assets'
 
 export type Swatch = {
   name: string
@@ -213,6 +213,8 @@ export type Preview = {
   title: string
   render?: string
   photo?: string
+  /** Looping video shown instead of the photo (large cards). */
+  video?: string
   large?: boolean
   to?: string
 }
@@ -220,7 +222,7 @@ export type Preview = {
 export const CASES_GRID: Preview[] = [
   { title: 'Terra', render: 'a66e79c5', photo: 'a0104ae8' },
   { title: 'North', render: '895e57c9', photo: 'fefcbee3' },
-  { title: 'Ridge', photo: 'cf5bfe47', large: true },
+  { title: 'Ridge', photo: 'cf5bfe47', video: VIDEO.ridge, large: true },
   { title: 'Core', render: '260be2e3', photo: '666e2e78' },
   { title: 'Torrent', render: '2c88c94e', photo: '32fd9882' },
   { title: 'Define', render: 'aedd5744', photo: '40f80661' },

@@ -7,7 +7,7 @@ import { AnchorLinks } from '../components/AnchorLinks'
 import { CategoryRow } from '../components/CategoryRow'
 import { ImageBand, Subscription } from '../components/Sections'
 import { CATEGORIES } from '../data/catalog'
-import { IMG } from '../lib/assets'
+import { IMG, VIDEO } from '../lib/assets'
 import s from './Home.module.css'
 
 const EASE = [0.22, 1, 0.36, 1] as const
@@ -24,7 +24,7 @@ export function Home() {
 
   return (
     <Page>
-      <Hero />
+      <Hero video={VIDEO.home} />
       <div className={s.heading}>
         <PageTitle title="All Categories">
           <AnchorLinks

@@ -46,3 +46,19 @@ export const FLAGS = {
   CHI: 'de296838',
   JPN: '9114e6fa',
 } as const
+
+/**
+ * Looping videos from the design (Figma VIDEO fills), exported by the designer
+ * and stored as `public/videos/<name>.webm` (VP9) + `<name>.mp4` (H.264), with a
+ * still `<name>.webp` shown instead when the visitor prefers reduced motion.
+ */
+export const VIDEO = {
+  home: 'home-loop',
+  popColors: 'pop-color-loop',
+  popCompartment: 'pop-compartment',
+  popAirflow: 'pop-airflow',
+  ridge: 'ridge-tumble',
+} as const
+
+export const video = (name: string, ext: 'webm' | 'mp4') => `${import.meta.env.BASE_URL}videos/${name}.${ext}`
+export const videoStill = (name: string) => `${import.meta.env.BASE_URL}videos/${name}.webp`
