@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'motion/react'
 import { Page } from '../components/Page'
 import { Img } from '../components/Img'
-import { Video } from '../components/Video'
+import { Video, PlayableVideo } from '../components/Video'
 import { ButtonLink, CaretLink } from '../components/Button'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { Reviews } from '../components/Reviews'
@@ -167,12 +167,7 @@ export function PopAirLanding() {
         </Reveal>
       </section>
       <section className={s.media}>
-        <Img src="22980726" tone="dark" />
-        <div className={s.play}>
-          <button type="button" className={s.playBtn} onClick={() => toast('Video playback is not part of this prototype.')}>
-            Play
-          </button>
-        </div>
+        <PlayableVideo name={VIDEO.popAirFilm} poster="22980726" playClass={s.play} buttonClass={s.playBtn} />
       </section>
 
       <section id="reviews" className={s.reviews}>

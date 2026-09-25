@@ -165,6 +165,20 @@
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 96px;
+  pointer-events: none;
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+}
+.play > button {
+  pointer-events: auto;
+}
+.play[data-hidden='true'] {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.play[data-hidden='true'] > button {
+  pointer-events: none;
 }
 .playBtn {
   padding: var(--space-sm) var(--space-lg);

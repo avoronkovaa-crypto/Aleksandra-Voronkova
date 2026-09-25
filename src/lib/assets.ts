@@ -57,7 +57,8 @@ export const VIDEO = {
   popColors: 'pop-color-loop',
   popCompartment: 'pop-compartment',
   popAirflow: 'pop-airflow',
-  ridge: 'ridge-tumble',
+  /** Pop Air film (Ridgetumble), played from the landing page's video block. */
+  popAirFilm: 'pop-air-film',
 } as const
 
 export const video = (name: string, ext: 'webm' | 'mp4') => `${import.meta.env.BASE_URL}videos/${name}.${ext}`
