@@ -7,6 +7,7 @@ import { Img } from '../components/Img'
 import { Video, PlayableVideo } from '../components/Video'
 import { ButtonLink, CaretLink } from '../components/Button'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
+import { ScrollFillText } from '../components/ScrollFillText'
 import { Reviews } from '../components/Reviews'
 import { Accordion, SpecGrid, COMPATIBILITY, SPECIFICATIONS, DIMENSIONS, OTHER } from '../components/Accordion'
 import { Compatible } from '../components/Compatible'
@@ -159,9 +160,10 @@ export function PopAirLanding() {
       </section>
 
       <section className={s.statement}>
-        <Reveal>
-          <p className={`t-title-1 ${s.statementText}`}>Pop Air brings attitude to airflow, melding precision engineering with dynamic design.</p>
-        </Reveal>
+        <ScrollFillText
+          className={`t-title-1 ${s.statementText}`}
+          text="Pop Air brings attitude to airflow, melding precision engineering with dynamic design."
+        />
       </section>
 
       <RevealGroup className={s.benefits}>

@@ -1,0 +1,5 @@
+/* Keep each word on one line so rows wrap exactly like the plain text */
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
