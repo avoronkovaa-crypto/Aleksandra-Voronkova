@@ -3,6 +3,7 @@ import type { CartItem } from '../../state/store'
 import { useStore } from '../../state/store'
 import { formatKr } from '../../data/catalog'
 import { Img } from '../Img'
+import { CROPS } from '../../lib/crops'
 import { Icon } from '../Icon'
 import s from './CartLine.module.css'
 
@@ -12,7 +13,7 @@ export function CartLine({ item, editable = true }: { item: CartItem; editable?:
   return (
     <div className={s.line}>
       <div className={s.thumb}>
-        <Img src={item.image} fit="contain" />
+        <Img src={item.image} fit="contain" crop={item.image === 'a77ec75f' ? CROPS.cartThumb : undefined} />
       </div>
       <div className={s.info}>
         <div className={s.top}>

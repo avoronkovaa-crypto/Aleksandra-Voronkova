@@ -9,6 +9,7 @@ import { Icon } from '../components/Icon'
 import { ImageBand, StoryBlock } from '../components/Sections'
 import { CASES_GRID } from '../data/catalog'
 import { IMG } from '../lib/assets'
+import { CROPS } from '../lib/crops'
 import s from './Cases.module.css'
 
 const FILTERS = ['Airflow', 'Silent', 'Mini-ITX', 'Micro-ATX', 'ATX', 'E-ATX', 'Tempered glass', 'RGB']
@@ -26,7 +27,7 @@ export function Cases() {
 
   return (
     <Page>
-      <Hero image={IMG.casesHero} />
+      <Hero image={IMG.casesHero} crop={CROPS.casesHero} />
       <PageTitle title="Cases" count={12} size="giant" />
 
       <div className={s.filters}>

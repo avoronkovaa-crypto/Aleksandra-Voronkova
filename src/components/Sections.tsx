@@ -4,6 +4,7 @@ import { Img } from './Img'
 import { ArrowButton } from './Button'
 import { Reveal } from './Reveal'
 import { IMG } from '../lib/assets'
+import { CROPS } from '../lib/crops'
 import s from './Sections.module.css'
 
 /** Full-bleed photograph (Figma › Fixed-aspect-ratio-spacer 1512×851) with gentle parallax. */
@@ -43,7 +44,7 @@ export function StoryBlock() {
           <h2 className="t-title-1">We've been thinking inside of the box since 2008</h2>
         </Reveal>
         <Reveal className={s.storyThumb} delay={0.1}>
-          <Img src={IMG.storyThumb} fit="contain" />
+          <Img src={IMG.storyThumb} crop={CROPS.storyThumb} />
         </Reveal>
       </div>
       <div className={s.storyText}>

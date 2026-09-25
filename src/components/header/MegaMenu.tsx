@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { CATEGORIES, COMMUNITY_LINKS } from '../../data/catalog'
 import { IMG } from '../../lib/assets'
 import { Img } from '../Img'
+import { CARD_CROPS } from '../../lib/crops'
 import { ArrowButton } from '../Button'
 import s from './MegaMenu.module.css'
 
@@ -95,7 +96,7 @@ export function MegaMenu({ onNavigate }: { onNavigate: () => void }) {
               animate={{ opacity: 1, scale: 1, transition: { duration: 0.5, ease: EASE } }}
               exit={{ opacity: 0, transition: { duration: 0.35, ease: EASE } }}
             >
-              <Img src={image} tone={current ? 'light' : 'dark'} eager />
+              <Img src={image} tone={current ? 'light' : 'dark'} eager crop={CARD_CROPS[image]} />
             </motion.div>
           </AnimatePresence>
         </div>
@@ -127,7 +128,7 @@ export function CommunityMenu() {
             initial={{ opacity: 0, scale: 1.04 }}
             animate={{ opacity: 1, scale: 1, transition: { duration: 0.5, ease: EASE } }}
           >
-            <Img src={IMG.megaCommunity} eager />
+            <Img src={IMG.megaCommunity} eager crop={CARD_CROPS[IMG.megaCommunity]} />
           </motion.div>
         </div>
       </div>

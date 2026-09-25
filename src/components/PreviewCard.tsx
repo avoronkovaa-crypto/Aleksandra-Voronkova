@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { Preview } from '../data/catalog'
 import { Img } from './Img'
+import { PREVIEW_PHOTO_CROPS, PREVIEW_RENDER_CROPS } from '../lib/crops'
 import { CaretLink } from './Button'
 import { useToast, NOT_IN_PROTOTYPE } from './Toast'
 import s from './PreviewCard.module.css'
@@ -17,12 +18,12 @@ export function PreviewCard({ item }: { item: Preview }) {
     <>
       {item.photo && (
         <div className={s.photo}>
-          <Img src={item.photo} tone="dark" />
+          <Img src={item.photo} tone="dark" crop={item.large ? undefined : PREVIEW_PHOTO_CROPS[item.photo]} />
         </div>
       )}
       {item.render && (
         <div className={s.render}>
-          <Img src={item.render} fit="contain" />
+          <Img src={item.render} fit="contain" crop={PREVIEW_RENDER_CROPS[item.render]} />
         </div>
       )}
       <div className={s.shade} />

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { Page } from '../components/Page'
 import { Img } from '../components/Img'
+import { CROPS } from '../lib/crops'
 import { Icon } from '../components/Icon'
 import { Button } from '../components/Button'
 import { Swatches } from '../components/Swatches'
@@ -68,7 +69,7 @@ export function ProductPage() {
               <AnimatePresence initial={false} custom={dir}>
                 <motion.div
                   key={slide}
-                  className={s.slide}
+                  className={`${s.slide} ${slide === 0 ? s.render : ''}`}
                   custom={dir}
                   initial={{ opacity: 0, x: dir * 80 }}
                   animate={{ opacity: 1, x: 0, transition: { duration: 0.55, ease: EASE } }}
@@ -81,7 +82,14 @@ export function ProductPage() {
                     else if (info.offset.x > 60) paginate(-1)
                   }}
                 >
-                  <Img src={gallery[slide]} fit={slide === 0 ? 'contain' : 'cover'} tone={slide === 0 ? 'light' : 'dark'} eager className={slide === 0 ? '' : s.photo} />
+                  <Img
+                    src={gallery[slide]}
+                    fit={slide === 0 ? 'contain' : 'cover'}
+                    tone={slide === 0 ? 'light' : 'dark'}
+                    eager
+                    className={slide === 0 ? '' : s.photo}
+                    crop={slide === 0 && product.id === 'pop-air' ? CROPS.gallery : undefined}
+                  />
                 </motion.div>
               </AnimatePresence>
             </div>

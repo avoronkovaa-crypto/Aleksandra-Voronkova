@@ -29,6 +29,8 @@
 
 .image {
   width: 100%;
+  /* Figma: render layer blend mode "Darken" */
+  mix-blend-mode: darken;
   aspect-ratio: 4 / 3;
   transition: transform var(--dur-slow) var(--ease-out);
 }

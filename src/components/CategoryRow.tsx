@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import type { Category } from '../data/catalog'
 import { Img } from './Img'
+import { CARD_CROPS } from '../lib/crops'
 import { ArrowButton, CaretLink, RoundArrow } from './Button'
 import s from './CategoryRow.module.css'
 
@@ -58,7 +59,7 @@ export function CategoryRow({ category }: Props) {
             >
               <Link to={card.to ?? to} className={`${s.card} hover-parent`}>
                 <div className={s.cardImg}>
-                  <Img src={card.image} tone="dark" />
+                  <Img src={card.image} tone="dark" crop={CARD_CROPS[card.image]} />
                 </div>
                 <div className={s.cardShade} />
                 <div className={s.cardText}>

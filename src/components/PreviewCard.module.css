@@ -14,6 +14,7 @@
 }
 
 .photo {
+  background: #020202;
   position: absolute;
   inset: 0;
   transition:
@@ -34,6 +35,8 @@
 
 .render {
   position: absolute;
+  /* Figma: render layer blend mode "Darken" — white studio background melts into the card */
+  mix-blend-mode: darken;
   left: 16px;
   right: 16px;
   top: 24px;

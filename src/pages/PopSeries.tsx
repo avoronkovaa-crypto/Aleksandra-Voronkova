@@ -12,6 +12,7 @@ import { Compatible } from '../components/Compatible'
 import { useToast, NOT_IN_PROTOTYPE } from '../components/Toast'
 import { POP_AIR_FAMILY, POP_SILENT_FAMILY, PRODUCTS } from '../data/catalog'
 import { IMG } from '../lib/assets'
+import { CROPS } from '../lib/crops'
 import s from './PopSeries.module.css'
 
 type Block = {
@@ -97,7 +98,7 @@ export function PopSeries() {
           <section key={b.id} id={b.id} className={s.block}>
             <div className={`${s.banner} ${b.dark ? s.dark : s.light}`}>
               <div className={s.bannerImg}>
-                <Img src={b.image} tone={b.dark ? 'dark' : 'light'} />
+                <Img src={b.image} tone={b.dark ? 'dark' : 'light'} crop={b.dark ? CROPS.popAirBlock : CROPS.popSilentBlock} />
               </div>
               <Reveal className={s.bannerText}>
                 <h2 className="t-title-1">{b.title}</h2>

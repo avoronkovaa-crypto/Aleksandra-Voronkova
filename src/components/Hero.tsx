@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'motion/react'
 import { useRef, type ReactNode } from 'react'
 import { Img } from './Img'
+import type { Crop } from '../lib/crops'
 import s from './Hero.module.css'
 
 type Props = {
@@ -8,6 +9,7 @@ type Props = {
   image?: string
   height?: number
   position?: string
+  crop?: Crop
   children?: ReactNode
 }
 
@@ -15,7 +17,7 @@ type Props = {
  * First-screen media (Figma › Fixed-aspect-ratio-spacer, 1512×821) with a
  * subtle parallax + slow zoom-in on load.
  */
-export function Hero({ image, height = 821, position, children }: Props) {
+export function Hero({ image, height = 821, position, crop, children }: Props) {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '18%'])
@@ -29,7 +31,7 @@ export function Hero({ image, height = 821, position, children }: Props) {
           animate={{ scale: 1 }}
           transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          {image ? <Img src={image} tone="dark" eager position={position} /> : <div className={s.ambient} />}
+          {image ? <Img src={image} tone="dark" eager position={position} crop={crop} /> : <div className={s.ambient} />}
         </motion.div>
       </motion.div>
       <div className={s.shade} />

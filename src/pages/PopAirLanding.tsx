@@ -11,6 +11,7 @@ import { Compatible } from '../components/Compatible'
 import { Dropdown } from '../components/Dropdown'
 import { useToast, NOT_IN_PROTOTYPE } from '../components/Toast'
 import { IMG } from '../lib/assets'
+import { CROPS } from '../lib/crops'
 import s from './PopAirLanding.module.css'
 
 const EASE = [0.22, 1, 0.36, 1] as const
@@ -151,7 +152,7 @@ export function PopAirLanding() {
       </RevealGroup>
 
       <section className={s.media}>
-        <Img src="f859dc43" tone="dark" />
+        <Img src="f859dc43" tone="dark" crop={CROPS.usbC} />
         <Reveal className={s.mediaText}>
           <h2 className="t-title-1">USB-C ready I/O panel</h2>
           <p className="t-body-1">

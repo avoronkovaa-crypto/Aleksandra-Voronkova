@@ -65,6 +65,10 @@
 .photo {
   border-radius: var(--radius-rounded);
 }
+/* Figma: product render uses blend mode "Darken" over the grey panel */
+.render {
+  mix-blend-mode: darken;
+}
 
 .pagination {
   display: flex;

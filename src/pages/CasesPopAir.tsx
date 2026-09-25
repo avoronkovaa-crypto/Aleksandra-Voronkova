@@ -7,6 +7,7 @@ import { Img } from '../components/Img'
 import { CaretLink } from '../components/Button'
 import { ImageBand, StoryBlock } from '../components/Sections'
 import { IMG } from '../lib/assets'
+import { CROPS } from '../lib/crops'
 import s from './CasesPopAir.module.css'
 
 const SHOWCASE = [
@@ -19,7 +20,7 @@ const SHOWCASE = [
 export function CasesPopAir() {
   return (
     <Page>
-      <Hero image={IMG.casesHero} />
+      <Hero image={IMG.casesHero} crop={CROPS.casesHero} />
       <div className={s.heading}>
         <PageTitle title="Cases Pop Air" count={12} />
       </div>
@@ -35,7 +36,7 @@ export function CasesPopAir() {
           >
             <Link to={item.to} className={`${s.card} hover-parent`}>
               <div className={s.img}>
-                <Img src={item.image} tone="dark" />
+                <Img src={item.image} tone="dark" crop={item.image === 'ba0c6557' ? CROPS.popXlAirShowcase : undefined} />
               </div>
               <div className={s.text}>
                 <p className="t-title-4">{item.title}</p>

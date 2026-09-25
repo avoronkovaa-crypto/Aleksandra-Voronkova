@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { Product } from '../data/catalog'
 import { Img } from './Img'
+import { PRODUCT_CARD_CROPS } from '../lib/crops'
 import { Swatches } from './Swatches'
 import s from './ProductCard.module.css'
 
@@ -21,7 +22,7 @@ export function ProductCard({ product, to = '/product/pop-air', className, tall 
       </div>
       <div className={s.media}>
         <div className={s.image}>
-          <Img src={product.image} fit="contain" alt={product.name} />
+          <Img src={product.image} fit="contain" alt={product.name} crop={tall ? undefined : PRODUCT_CARD_CROPS[product.image]} />
         </div>
         <Swatches swatches={product.swatches} active={swatch} onChange={setSwatch} extra={product.extraSwatches} />
       </div>
