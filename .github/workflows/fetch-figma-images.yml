@@ -1,0 +1,40 @@
+name: Fetch images from Figma
+
+# Run manually (Actions tab → "Fetch images from Figma" → Run workflow).
+# Needs a repository secret named FIGMA_TOKEN (a read-only Figma personal access token).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Download image fills from Figma
+        run: npm run fetch-assets
+        env:
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+      - name: Commit the images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/assets
+          if git diff --cached --quiet; then
+            echo "No new images to commit"
+          else
+            git commit -m "Add images fetched from Figma"
+            git push
+          fi
+      - name: Republish the site
+        run: gh workflow run deploy-pages.yml --ref "${GITHUB_REF_NAME}"
+        env:
+          GH_TOKEN: ${{ github.token }}
